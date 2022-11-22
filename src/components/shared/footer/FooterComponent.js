@@ -3,11 +3,11 @@ import './style.css';
 
 const FooterComponent = () => {
   return (
-    <div class="footer">
-      <div class="footer__logo">
+    <div className="footer">
+      <div className="footer__logo">
         <img src={LogoGreen} alt="Natours logo" />
       </div>
-      <ul class="footer__nav">
+      <ul className="footer__nav">
         <li>
           <a href="#">About us</a>
         </li>
@@ -24,7 +24,7 @@ const FooterComponent = () => {
           <a href="#">Contact</a>
         </li>
       </ul>
-      <p class="footer__copyright">
+      <p className="footer__copyright">
         &copy; by Mohammad Hadi (FullStack MERN project). All rights reserved.
       </p>
     </div>
