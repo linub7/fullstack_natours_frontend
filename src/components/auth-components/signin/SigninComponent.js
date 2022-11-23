@@ -52,7 +52,7 @@ const SigninComponent = () => {
     }
     setLoading(false);
     if (data?.status === 'success') {
-      toast.success('Successfully signed in');
+      toast.success('Successfully signed in ✔️');
       const {
         token,
         data: { user },
