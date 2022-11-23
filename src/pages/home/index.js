@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import MainContainer from 'components/home-components/main-container/MainContainer';
 import CommonLayout from 'components/shared/CommonLayout';
-import { handleGetAllTours } from 'api/tours';
+import { getAllToursHandler } from 'api/tours';
 
 const Home = () => {
   const [tours, setTours] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   const getAllTours = async () => {
-    const { data, err } = await handleGetAllTours();
+    const { data, err } = await getAllToursHandler();
     if (err) {
       console.log(err);
       return;

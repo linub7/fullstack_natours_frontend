@@ -1,6 +1,6 @@
 import client from '../client';
 
-export const handleGetAllTours = async () => {
+export const getAllToursHandler = async () => {
   try {
     const { data } = await client.get(`/tours`);
     return { data };

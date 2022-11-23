@@ -1,4 +1,12 @@
-const InputItem = ({ label, name, type, value, required, placeholder }) => {
+const InputItem = ({
+  label,
+  name,
+  type,
+  value,
+  required,
+  placeholder,
+  handleChange = () => {},
+}) => {
   return (
     <>
       <label className="form__label" htmlFor={name}>
@@ -7,10 +15,12 @@ const InputItem = ({ label, name, type, value, required, placeholder }) => {
       <input
         className="form__input"
         id={name}
+        name={name}
         type={type}
-        value={value}
         required={required}
         placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
       />
     </>
   );

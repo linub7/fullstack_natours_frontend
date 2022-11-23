@@ -1,6 +1,6 @@
 import client from 'api/client';
 
-export const handleSignup = async (name, email, password, passwordConfirm) => {
+export const signupHandler = async (name, email, password, passwordConfirm) => {
   try {
     const { data } = await client.post(`/auth/signup`, {
       name,
@@ -8,17 +8,17 @@ export const handleSignup = async (name, email, password, passwordConfirm) => {
       password,
       passwordConfirm,
     });
-    return data;
+    return { data };
   } catch (error) {
     const { response } = error;
     return { err: response?.data };
   }
 };
 
-export const handleSignin = async (email, password) => {
+export const signinHandler = async (email, password) => {
   try {
-    const { data } = await client.post(`/auth/signup`, { email, password });
-    return data;
+    const { data } = await client.post(`/auth/signin`, { email, password });
+    return { data };
   } catch (error) {
     const { response } = error;
     return { err: response?.data };
