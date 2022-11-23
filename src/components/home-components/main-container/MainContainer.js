@@ -1,12 +1,19 @@
+import PageSpinner from 'components/shared/spinner/page-spinner/PageSpinner';
 import Card from '../card/Card';
 import './style.css';
 
-const MainContainer = () => {
+const MainContainer = ({ loading }) => {
   return (
     <div className="main">
-      <div className="card-container">
-        <Card />
-      </div>
+      {loading ? (
+        <div className="page-loader">
+          <PageSpinner />
+        </div>
+      ) : (
+        <div className="card-container">
+          <Card />
+        </div>
+      )}
     </div>
   );
 };

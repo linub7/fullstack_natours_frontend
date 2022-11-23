@@ -329,3 +329,11 @@ body {
 .form__input::-webkit-input-placeholder {
   color: #bbb;
 }
+
+.page-loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 48vh;
+}

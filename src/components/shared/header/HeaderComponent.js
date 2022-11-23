@@ -1,15 +1,30 @@
 import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import Cookie from 'js-cookie';
 import Logo from 'assets/images/logo-white.png';
 import DefaultUser from 'assets/images/users/default.jpg';
 import './style.css';
 import { useAuth } from 'hooks';
+import { signoutHandler } from 'api/auth';
 
 const HeaderComponent = () => {
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleNavigateTo = (path) => {
     navigate(path);
+  };
+
+  const handleSignout = async () => {
+    const { err } = await signoutHandler(auth?.token);
+    if (err) {
+      console.log(err);
+      toast.error(err?.message);
+      return;
+    }
+    Cookie.remove('auth');
+    setAuth({ token: '', user: null });
+    window.location.reload();
   };
   return (
     <header className="header">
@@ -40,10 +55,15 @@ const HeaderComponent = () => {
           My bookings
         </Link> */}
         {auth?.token ? (
-          <Link to="/" className="nav__el">
-            <img src={DefaultUser} alt="User" className="nav__user-img" />
-            <span>Jonas</span>
-          </Link>
+          <>
+            <Link to="/account" className="nav__el">
+              <img src={DefaultUser} alt="User" className="nav__user-img" />
+              <span>{auth?.user?.name}</span>
+            </Link>
+            <button className="nav__el" onClick={handleSignout}>
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <button
