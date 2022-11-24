@@ -25,6 +25,18 @@ export const signinHandler = async (email, password) => {
   }
 };
 
+export const forgotPasswordHandler = async (email) => {
+  try {
+    const { data } = await client.post(`/auth/forgot-password`, {
+      email,
+    });
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
+
 export const signoutHandler = async (token) => {
   try {
     const { data } = await client.get(`/auth/signout`, {

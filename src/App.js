@@ -8,6 +8,7 @@ import SingleTour from 'pages/tours/[tourId]';
 import { Routes, Route } from 'react-router-dom';
 import NotLoggedInRoutes from 'routes/NotLoggedInRoutes';
 import LoggedInRoutes from 'routes/LoggedInRoutes';
+import ForgotPassword from 'pages/auth/forgot-password';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route element={<NotLoggedInRoutes />}>
           <Route path="/auth/signin" element={<Signin />} />
           <Route path="/auth/signup" element={<Signup />} />
+          <Route path="/auth/forgot-password" element={<ForgotPassword />} />
         </Route>
         <Route element={<LoggedInRoutes />}>
           <Route path="/account" element={<Account />} />

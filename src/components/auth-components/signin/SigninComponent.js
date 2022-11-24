@@ -8,7 +8,7 @@ import { useState } from 'react';
 import AuthSubmitButton from '../button/AuthSubmitButton';
 import CommonAuthLayout from '../layout/CommonAuthLayout';
 import { signinValidation } from 'utils/signinValidation';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SigninComponent = () => {
   const [values, setValues] = useState({
@@ -98,6 +98,9 @@ const SigninComponent = () => {
           validationError={validationError}
         />
       </form>
+      <Link className="forgot__text" to={'/auth/forgot-password'}>
+        Forgot Your Password?
+      </Link>
     </CommonAuthLayout>
   );
 };
