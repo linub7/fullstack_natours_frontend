@@ -37,6 +37,23 @@ export const forgotPasswordHandler = async (email) => {
   }
 };
 
+export const resetPasswordHandler = async (
+  password,
+  passwordConfirm,
+  token
+) => {
+  try {
+    const { data } = await client.patch(`/auth/reset-password/${token}`, {
+      password,
+      passwordConfirm,
+    });
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
+
 export const signoutHandler = async (token) => {
   try {
     const { data } = await client.get(`/auth/signout`, {
