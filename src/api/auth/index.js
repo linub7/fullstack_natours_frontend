@@ -38,3 +38,18 @@ export const signoutHandler = async (token) => {
     return { err: response?.data };
   }
 };
+
+export const updateUserInfoHandler = async (formData, token) => {
+  try {
+    const { data } = await client.patch(`/me/update`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};

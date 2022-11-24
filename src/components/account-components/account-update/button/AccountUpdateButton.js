@@ -1,7 +1,21 @@
-const AccountUpdateButton = ({ btnTitle }) => {
+import ButtonSpinner from 'components/shared/spinner/button-spinner/ButtonSpinner';
+import { useLoading } from 'hooks';
+
+const AccountUpdateButton = ({ btnTitle, handleClick }) => {
+  const { loading } = useLoading();
   return (
     <div className="form__group right">
-      <button className="btn btn--small btn--green">{btnTitle}</button>
+      {loading ? (
+        <ButtonSpinner />
+      ) : (
+        <button
+          className="btn btn--small btn--green"
+          disabled={loading}
+          onClick={handleClick}
+        >
+          {btnTitle}
+        </button>
+      )}
     </div>
   );
 };

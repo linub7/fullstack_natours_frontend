@@ -43,6 +43,10 @@ body {
   flex-direction: column;
 }
 
+input[type='file'] {
+  display: none;
+}
+
 .main {
   background-color: #f7f7f7;
   padding: 8rem 6rem;

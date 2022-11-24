@@ -57,7 +57,15 @@ const HeaderComponent = () => {
         {auth?.token ? (
           <>
             <Link to="/account" className="nav__el">
-              <img src={DefaultUser} alt="User" className="nav__user-img" />
+              {auth?.user?.photo?.url ? (
+                <img
+                  src={auth?.user?.photo?.url}
+                  alt="User"
+                  className="nav__user-img"
+                />
+              ) : (
+                <img src={DefaultUser} alt="User" className="nav__user-img" />
+              )}
               <span>{auth?.user?.name}</span>
             </Link>
             <button className="nav__el" onClick={handleSignout}>
