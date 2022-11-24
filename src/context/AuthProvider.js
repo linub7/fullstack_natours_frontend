@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import Cookie from 'js-cookie';
 
 export const AuthContext = createContext();
 
@@ -10,8 +10,8 @@ const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    if (Cookies.get('auth')) {
-      setAuth(JSON.parse(Cookies.get('auth')));
+    if (Cookie.get('auth')) {
+      setAuth(JSON.parse(Cookie.get('auth')));
     }
   }, []);
 

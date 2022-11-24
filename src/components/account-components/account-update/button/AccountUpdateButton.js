@@ -1,7 +1,7 @@
 import ButtonSpinner from 'components/shared/spinner/button-spinner/ButtonSpinner';
 import { useLoading } from 'hooks';
 
-const AccountUpdateButton = ({ btnTitle, handleClick }) => {
+const AccountUpdateButton = ({ btnTitle, handleClick, validationError }) => {
   const { loading } = useLoading();
   return (
     <div className="form__group right">
@@ -10,7 +10,7 @@ const AccountUpdateButton = ({ btnTitle, handleClick }) => {
       ) : (
         <button
           className="btn btn--small btn--green"
-          disabled={loading}
+          disabled={loading || validationError}
           onClick={handleClick}
         >
           {btnTitle}

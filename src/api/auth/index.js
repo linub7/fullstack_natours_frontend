@@ -53,3 +53,26 @@ export const updateUserInfoHandler = async (formData, token) => {
     return { err: response?.data };
   }
 };
+
+export const updateUserPasswordHandler = async (
+  oldPassword,
+  password,
+  passwordConfirm,
+  token
+) => {
+  try {
+    const { data } = await client.patch(
+      `/auth/update-my-password`,
+      { oldPassword, password, passwordConfirm },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
